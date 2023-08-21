@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/new.dart';
 import 'package:instagram/stories.dart';
 
 class Main_Page extends StatefulWidget {
@@ -10,69 +11,165 @@ class Main_Page extends StatefulWidget {
 
 class _Main_PageState extends State<Main_Page> {
   List<Stories> stories = [
-    Stories(image: "https://android-obzor.com/wp-content/uploads/2022/03/28e4ac42f547e6ac0f50f7cfa916ca93.jpg", nickname: "Hacker"),
-    Stories(image: "https://coolsen.ru/wp-content/uploads/2021/06/1-3.jpg", nickname: "Bicker"),
-    Stories(image: "https://otkritkis.com/wp-content/uploads/2022/06/ra8ja-scaled.jpg", nickname: "Marshmallow"),
-    Stories(image: "https://i.pinimg.com/originals/c8/1c/ae/c81cae2788d2e54bcd23592fb4dd708d.jpg", nickname: "Girl"),
-    Stories(image: "https://proprikol.ru/wp-content/uploads/2020/02/kartinki-na-avatarku-dlya-parnej-i-muzhchin-3-1.jpg", nickname: "Pantera"),
-    Stories(image: "https://otkritkis.com/wp-content/uploads/2021/12/966354c619a9b618f2e8.jpg", nickname: "Eminem"),
-    Stories(image: "https://proprikol.ru/wp-content/uploads/2020/02/kartinki-na-avatarku-dlya-parnej-i-muzhchin-1-1.jpg", nickname: "Brat"),
+    Stories(
+        image:
+            "https://android-obzor.com/wp-content/uploads/2022/03/28e4ac42f547e6ac0f50f7cfa916ca93.jpg",
+        nickname: "Hacker"),
+    Stories(
+        image: "https://coolsen.ru/wp-content/uploads/2021/06/1-3.jpg",
+        nickname: "Bicker"),
+    Stories(
+        image:
+            "https://otkritkis.com/wp-content/uploads/2022/06/ra8ja-scaled.jpg",
+        nickname: "Marshmallow"),
+    Stories(
+        image:
+            "https://i.pinimg.com/originals/c8/1c/ae/c81cae2788d2e54bcd23592fb4dd708d.jpg",
+        nickname: "Girl"),
+    Stories(
+        image:
+            "https://proprikol.ru/wp-content/uploads/2020/02/kartinki-na-avatarku-dlya-parnej-i-muzhchin-3-1.jpg",
+        nickname: "Pantera"),
+    Stories(
+        image:
+            "https://otkritkis.com/wp-content/uploads/2021/12/966354c619a9b618f2e8.jpg",
+        nickname: "Eminem"),
+    Stories(
+        image:
+            "https://proprikol.ru/wp-content/uploads/2020/02/kartinki-na-avatarku-dlya-parnej-i-muzhchin-1-1.jpg",
+        nickname: "Brat"),
+  ];
+  List<News> news = [
+    News(
+        ava: "assets/anwar.jpg",
+        nickname: "anwar",
+        place: "Tokio, Japan",
+        image: "assets/japan.png"),
+    News(
+        ava: "assets/ava.png",
+        nickname: "jacob_w",
+        place: "Samarkand, Uzbekistan",
+        image: "assets/samarkand.webp"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        elevation: 0,
+        title: Image.asset("assets/instagramtext.png"),
+        leading: Icon(Icons.camera_alt_outlined, color: Colors.black),
+        actions: [
+          Icon(Icons.live_tv_outlined, color: Colors.black),
+          SizedBox(
+            width: 15,
+          ),
+          Transform.rotate(
+              angle: 150,
+              child: Icon(
+                Icons.send,
+                color: Colors.black,
+              )),
+          SizedBox(
+            width: 10,
+          )
+        ],
+      ),
       body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 1, left: 1, right: 1),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          children: [
+            Divider(
+              thickness: 2,
+              color: Colors.grey[300],
+            ),
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, int index) {
+                  return Column(
                     children: [
-                      Icon(Icons.camera_alt_outlined),
-                      Image.asset(
-                        "images/instagramtext.png",
-                        width: 105,
-                        height: 82,
+                      ClipOval(
+                        child: SizedBox.fromSize(
+                          size: Size.fromRadius(40), // Image radius
+                          child: Image.network(stories[index].image,
+                              fit: BoxFit.cover),
+                        ),
                       ),
-                      Icon(Icons.send),
+                      Text(stories[index].nickname)
                     ],
-                  ),
-                ),
+                  );
+                },
+                itemCount: stories.length,
               ),
-              Divider(
-                thickness: 2,
-                color: Colors.grey[300],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+            ),
+            Expanded(
+              child: ListView.separated(
                   itemBuilder: (context, int index) {
                     return Column(
                       children: [
-                        ClipOval(
-                          child: SizedBox.fromSize(
-                            size: Size.fromRadius(35), // Image radius
-                            child: Image.network(stories[index].image,
-                                fit: BoxFit.cover),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 60,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  ClipOval(
+                                    child: SizedBox.fromSize(
+                                      size: Size.fromRadius(20), // Image radius
+                                      child: Image.asset(news[index].ava,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        news[index].nickname,
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        news[index].place,
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w200),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.more_horiz,
+                              )
+                            ],
                           ),
                         ),
-                        Text(stories[index].nickname)
+                        Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width,
+                            child: Image.asset(news[index].image),
+                          ),
+                        ),
                       ],
                     );
                   },
-                  itemCount: stories.length,
-                ),
-              )
-            ],
-          ),
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      thickness: 0.5,
+                    );
+                  },
+                  itemCount: news.length),
+            )
+          ],
         ),
       ),
     );

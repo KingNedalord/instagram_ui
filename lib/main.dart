@@ -23,9 +23,9 @@ class _InstagramState extends State<Instagram> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("images/instagramtext.png"),
+            Image.asset("assets/instagramtext.png"),
             SizedBox(height: 50),
-            Image.asset("images/oval.png"),
+            Image.asset("assets/ava.png"),
             Text("jacob_w"),
             SizedBox(
               height: 25,
@@ -35,7 +35,7 @@ class _InstagramState extends State<Instagram> {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => Second()));
               },
-              child: Image.asset("images/button.png"),
+              child: Image.asset("assets/button.png"),
             ),
             SizedBox(
               height: 15,

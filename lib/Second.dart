@@ -21,7 +21,7 @@ class _SecondState extends State<Second> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("images/instagramtext.png"),
+              Image.asset("assets/instagramtext.png"),
               SizedBox(
                 height: 40,
               ),
@@ -70,14 +70,14 @@ class _SecondState extends State<Second> {
                 },
                 child:
                 Image.asset(
-                    login == true ? "images/button.png" : "images/button2.png"),
+                    login == true ? "assets/button.png" : "assets/button2.png"),
               ),
               const SizedBox(
                 height: 30,
               ),
               MaterialButton(
                 onPressed: () {},
-                child: Image.asset("images/facebook.png"),
+                child: Image.asset("assets/facebook.png"),
               ),
               const SizedBox(
                 height: 30,
