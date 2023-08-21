@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:instagram/Second.dart';
 
 void main() {
-  runApp(MaterialApp(home: Instagram(),));
+  runApp(MaterialApp(
+    home: Instagram(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class Instagram extends StatefulWidget {
@@ -20,22 +23,43 @@ class _InstagramState extends State<Instagram> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("Instagramlogo.png"),
+            Image.asset("images/instagramtext.png"),
             SizedBox(height: 50),
-            Image.asset("Oval.png"),
+            Image.asset("images/oval.png"),
             Text("jacob_w"),
-            SizedBox(height: 25,),
-            MaterialButton(onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (_)=>Second()));},child: Image.asset("Button.png"),),
-            SizedBox(height: 15,),
-            TextButton(onPressed: (){}, child: Text("Switch account")),
+            SizedBox(
+              height: 25,
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => Second()));
+              },
+              child: Image.asset("images/button.png"),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextButton(onPressed: () {}, child: Text("Switch account")),
           ],
         ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Don't have an account?"),MaterialButton(onPressed: (){},child: Text("Sign up",style: TextStyle(color: Colors.blue),),)],),
-      )
-      ,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Don't have an account?"),
+            MaterialButton(
+              onPressed: () {},
+              child: Text(
+                "Sign up",
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
