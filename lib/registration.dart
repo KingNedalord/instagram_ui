@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/loginPage.dart';
 import 'package:instagram/mainPage.dart';
 
 class Registration extends StatefulWidget {

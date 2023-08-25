@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/new.dart';
-import 'package:instagram/stories.dart';
+
 
 class Main_Page extends StatefulWidget {
   const Main_Page({super.key});

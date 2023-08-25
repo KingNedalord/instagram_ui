@@ -4,7 +4,7 @@ import 'package:instagram/profile.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Profile(),
+    home: Instagram(),
     debugShowCheckedModeBanner: false,
   ));
 }
