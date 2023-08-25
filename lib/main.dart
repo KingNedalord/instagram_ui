@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/Second.dart';
+import 'package:instagram/profile.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Instagram(),
+    home: Profile(),
     debugShowCheckedModeBanner: false,
   ));
 }

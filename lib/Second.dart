@@ -82,14 +82,14 @@ class _SecondState extends State<Second> {
               const SizedBox(
                 height: 30,
               ),
-              //  Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(height: 2,color: Colors.grey,width: MediaQuery.of(context).size.width/2,),
-              //     Text("or"),
-              //     Container(height: 2,color: Colors.grey,width: MediaQuery.of(context).size.width/2,),
-              //   ],
-              // )
+               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(child: Divider(height: 1,color: Colors.grey,indent: 15,endIndent: 15,)),
+                  Text("OR"),
+                  Expanded(child:Divider(height: 1,color: Colors.grey,indent: 15,endIndent: 15))
+                ],
+              )
             ],
           ),
         ),
