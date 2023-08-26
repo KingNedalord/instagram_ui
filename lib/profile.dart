@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Row(
+        title: const Row(
           children: [
             Text(
               "jacob_w",
@@ -25,16 +25,16 @@ class _ProfileState extends State<Profile> {
             )
           ],
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.add_box_outlined,
               color: Colors.black,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.menu,
               color: Colors.black,
@@ -45,36 +45,24 @@ class _ProfileState extends State<Profile> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 200,
+            expandedHeight: 350,
             pinned: true,
+            floating: true,
             backgroundColor: Colors.white,
-            actions: [
-              DefaultTabController(
-                  length: 2,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      bottom: TabBar(tabs:[
-                        Icon(Icons.person),
-                        Icon(Icons.add_card_sharp),
-                      ]),
-                    ),
-                  )
-              )
-            ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Image.asset("assets/ava.png"),
+                          CircleAvatar(
+                            radius: 45, // Image radius
+                            backgroundImage: AssetImage("assets/ava.png"),
+                          ),
                           Column(
                             children: [Text("54"), Text("Posts")],
                           ),
@@ -86,21 +74,88 @@ class _ProfileState extends State<Profile> {
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                          const Text(
+                            "Jacob West",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          Row(children: [
+                            Text("Digital goodies designer "),
+                            Text(
+                              "@pixellz",
+                              style: TextStyle(color: Colors.blue[300]),
+                            )
+                          ]),
+                          Text("Everything is designed"),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Jacob West",
-                                style: TextStyle(fontWeight: FontWeight.w400),),
-                              Row(children: [
-                                Text("Digital goodies designer "),
-                                Text("@pixellz",
-                                  style: TextStyle(color: Colors.blue[300]),)
-                              ])
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.grey[200]),
+                                height: 30,
+                                width: 300,
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Edit profile"),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Row(
+                            children: [
+                              Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 30, // Image radius
+                                    backgroundImage:
+                                        AssetImage("assets/friends.jpg"),
+                                  ),
+                                  Text("Friends")
+                                ],
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 30, // Image radius
+                                    backgroundImage:
+                                        AssetImage('assets/programmer.jpg'),
+                                  ),
+                                  Text("Design")
+                                ],
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 30, // Image radius
+                                    backgroundImage:
+                                        AssetImage('assets/sport.jpg'),
+                                  ),
+                                  Text("Sport")
+                                ],
+                              )
+                            ],
+                          )
                         ],
                       )
                     ],
@@ -111,14 +166,14 @@ class _ProfileState extends State<Profile> {
           ),
           SliverList(
               delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-                return Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: Colors.red,
-                  margin: EdgeInsets.all(8.0),
-                );
-              }, childCount: 10)),
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+            return Container(
+              width: double.infinity,
+              height: 100,
+              color: Colors.red,
+              margin: EdgeInsets.all(8.0),
+            );
+          }, childCount: 10)),
         ],
       ),
     );

@@ -22,7 +22,7 @@ class _RegistrationState extends State<Registration> {
               const Text(
                 "Registration",
                 style: TextStyle(
-                    fontFamily: "Shyest",
+                    fontFamily: "shy",
                     fontSize: 50,
                     fontWeight: FontWeight.w500),
               ),
@@ -53,10 +53,10 @@ class _RegistrationState extends State<Registration> {
                     if (loginCont1.value.text != "" &&
                         passwordContr1.value.text != "") {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => Main_Page()));
+                          MaterialPageRoute(builder: (_) =>  Main_Page()));
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("login or passsword is incorrect"),
+                      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
+                        content: Text("All fields have to be filled"),
                       ));
                     }
                   },

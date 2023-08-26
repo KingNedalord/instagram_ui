@@ -12,7 +12,6 @@ class Second extends StatefulWidget {
 class _SecondState extends State<Second> {
   TextEditingController loginContr = TextEditingController();
   TextEditingController passwordContr = TextEditingController();
-  bool login = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +20,22 @@ class _SecondState extends State<Second> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/instagramtext.png"),
-              SizedBox(
+              const Text(
+                "Instagram",
+                style: TextStyle(
+                    fontFamily: "shy",
+                    fontSize: 50,
+                    fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(
                 height: 40,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: loginContr,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: "LogIn"),
-                  onChanged: (value) {
-                    setState(() {
-                      if (value.length > 0) {
-                        login = true;
-                      }
-                    });
-                  },
                 ),
               ),
               Padding(
@@ -53,7 +51,7 @@ class _SecondState extends State<Second> {
                 children: [
                   MaterialButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Forgot password?",
                       style: TextStyle(color: Colors.blue),
                     ),
@@ -64,14 +62,30 @@ class _SecondState extends State<Second> {
                 height: 30,
               ),
               MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => Main_Page()));
-                },
-                child:
-                Image.asset(
-                    login == true ? "assets/button.png" : "assets/button2.png"),
-              ),
+                  onPressed: () {
+                    if (loginContr != "" && passwordContr != "") {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => Main_Page()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("login or password is incorrect"),
+                      ));
+                    }
+                  },
+                  child: Container(
+                    width: 330,
+                    height: 40,
+                    color: Colors.blue[700],
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Log In",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  )),
               const SizedBox(
                 height: 30,
               ),
@@ -82,19 +96,30 @@ class _SecondState extends State<Second> {
               const SizedBox(
                 height: 30,
               ),
-               Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(child: Divider(height: 1,color: Colors.grey,indent: 15,endIndent: 15,)),
+                  Expanded(
+                      child: Divider(
+                    height: 1,
+                    color: Colors.grey,
+                    indent: 15,
+                    endIndent: 15,
+                  )),
                   Text("OR"),
-                  Expanded(child:Divider(height: 1,color: Colors.grey,indent: 15,endIndent: 15))
+                  Expanded(
+                      child: Divider(
+                          height: 1,
+                          color: Colors.grey,
+                          indent: 15,
+                          endIndent: 15))
                 ],
               )
             ],
           ),
         ),
         bottomNavigationBar:
-        const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
             "Instagram  from  Facebook",
             style: TextStyle(fontFamily: "Schyler"),
